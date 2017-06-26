@@ -1,4 +1,4 @@
-//Microsoft Developer Studio generated resource script.
+// Microsoft Visual C++ generated resource script.
 //
 #include "resource.h"
 
@@ -7,34 +7,32 @@
 //
 // Generated from the TEXTINCLUDE 2 resource.
 //
-#include "WinResrc.h"
+#include "afxres.h"
 
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Menu
 //
 
-IDR_MAIN_MENU MENU DISCARDABLE 
+IDR_MAIN_MENU MENU
 BEGIN
     POPUP "File"
     BEGIN
-        MENUITEM "&Open...",                    IDM_FILE_OPEN
-        MENUITEM "&Save",                       IDM_FILE_SAVE
+        MENUITEM "&Open...\tCtrl+O",            IDM_FILE_OPEN
+        MENUITEM "&Save...\tCtrl+S",            IDM_FILE_SAVE
         MENUITEM "S&ave As...",                 IDM_FILE_SAVE_AS
         MENUITEM SEPARATOR
-        MENUITEM "Print",                       IDM_FILE_PRINT
+        MENUITEM "Print...\tCtrl+P",            IDM_FILE_PRINT
         MENUITEM SEPARATOR
         MENUITEM "E&xit",                       IDM_FILE_EXIT
     END
@@ -42,13 +40,13 @@ BEGIN
     BEGIN
         MENUITEM "Undo",                        IDM_EDIT_UNDO
         MENUITEM SEPARATOR
-        MENUITEM "Cut",                         IDM_EDIT_CUT
-        MENUITEM "Copy",                        IDM_EDIT_COPY
-        MENUITEM "Paste",                       IDM_EDIT_PASTE
+        MENUITEM "Cut\tCtrl+X",                 IDM_EDIT_CUT
+        MENUITEM "Copy\tCtrl+C",                IDM_EDIT_COPY
+        MENUITEM "Paste\tCtrl+V",               IDM_EDIT_PASTE
         MENUITEM SEPARATOR
-        MENUITEM "&Find...",                    IDM_EDIT_FIND
+        MENUITEM "&Find...\tCtrl+F",            IDM_EDIT_FIND
         MENUITEM SEPARATOR
-        MENUITEM "Select All",                  IDM_EDIT_SELECTALL
+        MENUITEM "Select All\tCtrl+A",          IDM_EDIT_SELECTALL
     END
     POPUP "Format"
     BEGIN
@@ -68,18 +66,18 @@ END
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE DISCARDABLE 
+1 TEXTINCLUDE 
 BEGIN
     "resource.h\0"
 END
 
-2 TEXTINCLUDE DISCARDABLE 
+2 TEXTINCLUDE 
 BEGIN
     "#include ""afxres.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE DISCARDABLE 
+3 TEXTINCLUDE 
 BEGIN
     "\r\n"
     "\0"
@@ -93,13 +91,12 @@ END
 // Accelerator
 //
 
-IDR_ACCELERATOR ACCELERATORS DISCARDABLE 
+IDR_ACCELERATOR ACCELERATORS
 BEGIN
-    "A",            IDM_EDIT_SELECTALL,     VIRTKEY, CONTROL, NOINVERT
     "F",            IDM_EDIT_FIND,          VIRTKEY, CONTROL, NOINVERT
+    "A",            IDM_EDIT_SELECTALL,     VIRTKEY, CONTROL, NOINVERT
     "O",            IDM_FILE_OPEN,          VIRTKEY, CONTROL, NOINVERT
     "S",            IDM_FILE_SAVE,          VIRTKEY, CONTROL, NOINVERT
-    "X",            IDM_FILE_EXIT,          VIRTKEY, CONTROL, NOINVERT
 END
 
 
@@ -108,8 +105,8 @@ END
 // Dialog
 //
 
-IDD_ABOUT DIALOG DISCARDABLE  0, 0, 141, 95
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_ABOUT DIALOG 0, 0, 141, 95
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About Tedit"
 FONT 8, "MS Sans Serif"
 BEGIN
@@ -128,7 +125,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO DISCARDABLE 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_ABOUT, DIALOG
     BEGIN
@@ -148,8 +145,9 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_APP_ICON            ICON    DISCARDABLE     "appicon.ico"
-#endif    // English (U.S.) resources
+IDI_APP_ICON            ICON                    "appicon.ico"
+
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
