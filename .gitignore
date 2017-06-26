@@ -12,6 +12,7 @@
 *.pdb
 *.idb
 *.db
+*.suo
 
 # Packages #
 ############
