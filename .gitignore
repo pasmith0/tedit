@@ -9,6 +9,9 @@
 *.res
 *.obj
 *.ilk
+*.pdb
+*.idb
+*.db
 
 # Packages #
 ############
