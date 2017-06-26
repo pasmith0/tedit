@@ -33,11 +33,11 @@ const int      window_x_size = 600;
 const int      window_y_size = 400;
 long           default_word_break_func;
 
-DWORD          edit_style_scroll =  WS_CHILD|WS_VISIBLE|ES_MULTILINE|ES_WANTRETURN|
+DWORD          EDIT_STYLE_SCROLL =  WS_CHILD|WS_VISIBLE|ES_MULTILINE|ES_WANTRETURN|
                                     WS_VSCROLL|ES_AUTOVSCROLL|
                                     WS_HSCROLL|ES_AUTOHSCROLL;
 
-DWORD          edit_style_noscroll = WS_CHILD|WS_VISIBLE|ES_MULTILINE|ES_WANTRETURN|
+DWORD          EDIT_STYLE_NOSCROLL = WS_CHILD|WS_VISIBLE|ES_MULTILINE|ES_WANTRETURN|
                                      WS_VSCROLL|ES_AUTOVSCROLL;
 
 _TCHAR         szDbg[255];
@@ -140,7 +140,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstnce, LPSTR lpCmdLine, int
       return 0;
    }
    
-   hwnd_edit = CreateWindowEx(WS_EX_CLIENTEDGE,_T("EDIT"),_T(""),edit_style_scroll,0,0,0,0,hwnd_main,NULL,hInst,NULL);
+   hwnd_edit = CreateWindowEx(WS_EX_CLIENTEDGE,_T("EDIT"),_T(""),EDIT_STYLE_SCROLL,0,0,0,0,hwnd_main,NULL,hInst,NULL);
    if( !hwnd_edit )
    {
       MessageBox(NULL,_T("Error creating edit box"),app_name,MB_OK);
@@ -188,7 +188,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstnce, LPSTR lpCmdLine, int
    UpdateWindow(hwnd_main);
 
    // load the accelerator table
-   haccel = LoadAccelerators(hInst,MAKEINTRESOURCE(IDR_ACCELERATOR));
+   haccel = LoadAccelerators(hInst, MAKEINTRESOURCE(IDR_ACCELERATOR));
 
    // process command line
    cmdLine = GetCommandLine();
@@ -235,14 +235,35 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstnce, LPSTR lpCmdLine, int
    //
    while( GetMessage(&msg, NULL, 0, 0) ) 
    {
-      if( (hwnd_find == 0) || (IsDialogMessage(hwnd_find,&msg) == 0) )
-      {
-         if( !TranslateAccelerator(hwnd_main, haccel, &msg) ) 
-         { 
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-         }
-      }
+	   if (TranslateAccelerator(hwnd_main, haccel, &msg))
+	   {
+		   continue;
+	   }
+
+		if ((hwnd_find == 0) || !IsDialogMessage(hwnd_find, &msg))
+	   {
+		   {
+			   TranslateMessage(&msg);
+			   DispatchMessage(&msg);
+		   }
+	   }
+
+	   //if ((hwnd_find == 0) || !IsDialogMessage(hwnd_find, &msg))
+	   //{
+	//	   if (!TranslateAccelerator(hwnd_main, haccel, &msg))
+	//	   {
+	//		   TranslateMessage(&msg);
+	//		   DispatchMessage(&msg);
+	//	   }
+	 //  }
+
+      //if( hwnd_find == 0 || 
+		//  !IsDialogMessage(hwnd_find, &msg) == 0 &&
+        //  !TranslateAccelerator(hwnd_main, haccel, &msg) ) 
+      //{ 
+      //   TranslateMessage(&msg);
+      //   DispatchMessage(&msg);
+      //}
    }
 
    return 0;
@@ -1351,7 +1372,7 @@ BOOL open_file(_TCHAR *full_path)
                       NULL,               // pointer to security attributes
                       OPEN_EXISTING,      // how to create
                       FILE_ATTRIBUTE_NORMAL,  // file attributes
-                      NULL                // handle to file with attributes to                                // copy
+                      NULL                // handle to file with attributes to copy
                       );
    if( hfile != INVALID_HANDLE_VALUE )
    {
@@ -1546,12 +1567,12 @@ void set_word_wrap(BOOL new_word_wrap)
 
    if( new_word_wrap )
    {
-      hwnd_edit = CreateWindowEx(WS_EX_CLIENTEDGE,_T("EDIT"),_T(""),edit_style_noscroll,0,0,0,0,hwnd_main,NULL,hInstance,NULL);
+      hwnd_edit = CreateWindowEx(WS_EX_CLIENTEDGE,_T("EDIT"),_T(""), EDIT_STYLE_NOSCROLL,0,0,0,0,hwnd_main,NULL,hInstance,NULL);
       SendMessage(hwnd_edit,EM_SETWORDBREAKPROC,(WPARAM)0,(LPARAM)default_word_break_func);
    }
    else
    {
-      hwnd_edit = CreateWindowEx(WS_EX_CLIENTEDGE,_T("EDIT"),_T(""),edit_style_scroll,0,0,0,0,hwnd_main,NULL,hInstance,NULL);
+      hwnd_edit = CreateWindowEx(WS_EX_CLIENTEDGE,_T("EDIT"),_T(""), EDIT_STYLE_SCROLL,0,0,0,0,hwnd_main,NULL,hInstance,NULL);
       SendMessage(hwnd_edit,EM_SETWORDBREAKPROC,(WPARAM)0,(LPARAM)EditWordBreakProc);
    }
 
