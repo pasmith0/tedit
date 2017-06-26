@@ -1,4 +1,0 @@
-﻿  tedit.c
-tedit.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
-  tedit.vcxproj -> C:\dev\windows\tedit\Debug\tedit.exe
-  tedit.vcxproj -> C:\dev\windows\tedit\Debug\tedit.pdb (Full PDB)
